@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.box{
+			width: 560px;
+			height: 300px;
+			margin: 50px auto;
+			position: relative;
+		}
+		.box ul {
+			width: 100%;
+			height: 100%;
+			display: flex;
+		}
+		.box li{
+			width: 100%;
+			height: 100%;
+			position: relative;
+			transform-style: preserve-3d;
+		}
+		.box li span {
+			width: 100%;
+			height: 100%;
+			display: block;
+			position: absolute;
+		}
+		.before {
+			background: url("img/1.jpg") no-repeat;
+			transform: translateZ(150px);
+		}
+		.top {
+			background: url("img/2.jpg") no-repeat;
+			transform: rotateX(90deg) translateZ(150px)
+		}
+		.back {
+			background: url("img/3.jpg") no-repeat;
+			transform: rotateX(180deg) translateZ(150px);
+		}
+		.bottom {
+			background: url("img/4.jpg") no-repeat;
+			transform: rotateX(-90deg) translateZ(150px);
+		}
+		 li:nth-child(2) span {
+		 	 background-position: -112px;
+		 }
+		
+		  li:nth-child(3) span {
+		 	 background-position: -224px;
+		 }
+
+
+		 li:nth-child(4) span {
+				 	 background-position: -336px;
+		}
+
+ 		 li:nth-child(5) span {
+		 	 background-position: right;
+		 }
+
+		.btns a {
+			position: absolute;
+			top: 50%;
+			margin-top: -30px;
+			text-decoration: none;
+			color: #fff;
+			width: 30px;
+			height: 60px;
+			text-align: center;
+			line-height: 60px;
+			background: rgba(0,0,0,.5);
+			display: block;
+		}
+		.btns .rbtn{
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li>
+				<span class="top"></span>
+				<span class="bottom"></span>
+				<span class="before"></span>
+				<span class="back"></span>
+			</li>
+			<li>
+					 <span class="top"></span>
+					 <span class="bottom"></span>
+					 <span class="before"></span>
+					 <span class="back"></span>
+		 		 </li>
+		 		 <li>
+					 <span class="top"></span>
+					 <span class="bottom"></span>
+					 <span class="before"></span>
+					 <span class="back"></span>
+		 		 </li>
+		 		  <li>
+					 <span class="top"></span>
+					 <span class="bottom"></span>
+					 <span class="before"></span>
+					 <span class="back"></span>
+		 		 </li>
+		 		  <li>
+					 <span class="top"></span>
+					 <span class="bottom"></span>
+					 <span class="before"></span>
+					 <span class="back"></span>
+		 		 </li>
+		</ul>
+		<div class="btns">
+			<a href="#" class="lbtn"><</a>
+			<a href="#" class="rbtn">></a>
+		</div>
+	</div>
+	<script>
+		var lbtn=document.querySelector(".lbtn");
+		var rbtn=document.querySelector(".rbtn");
+		var li=document.querySelectorAll("li");
+		var n=0;
+		var flag=true;
+		// 点击右按钮
+		 		rbtn.onclick=function () {
+		 			if(flag){
+		 				n--;
+		 			  for(var i=0; i<li.length; i++){
+		 			  	li[i].style.transform="rotateX("+n*90+"deg)";
+		 			    li[i].style.transition="all 1s linear "+0.2*i+"s";
+		 			  }
+		 			  flag=false;
+		 			}
+		 			  
+		 			  
+		 		}
+		 		//左按钮
+		 		lbtn.onclick=function () {
+		 			 if(flag){
+		 			 	 n++;
+		 			   for(var i=0; i<li.length; i++){
+		 			  	li[i].style.transform="rotateX("+n*90+"deg)";
+		 			    li[i].style.transition="all 1s linear "+0.2*i+"s";
+		 			  }
+		 			  flag=false;
+		 			 }
+		 			 
+		 		}
+		 		var last_li=document.querySelector("ul li:last-child");
+		 		last_li.addEventListener("transitionend",function(){
+		 			flag=true;
+		 		})
+
+	</script>
+</body>
+</html>
